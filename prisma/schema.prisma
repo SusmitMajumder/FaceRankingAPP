@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model FaceImage {
+  id            String   @id @default(cuid())
+  subjectId     String   // e.g., "Sub_1"
+  imageId       String   // e.g., "Img_1"
+  cloudinaryUrl String   // Full Cloudinary URL
+  publicId      String   // Cloudinary public ID for deletion
+  createdAt     DateTime @default(now())
+}
